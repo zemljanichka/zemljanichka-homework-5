@@ -9,8 +9,7 @@ class sea_battle_t {
 public:
   enum turn_t { FIRST_PLAYER = 0, SECOND_PLAYER = 1 };
 
-  sea_battle_t(std::shared_ptr<player_interface_t> player1, field_t field1, std::shared_ptr<player_interface_t> player2,
-               field_t field2);
+  sea_battle_t(std::shared_ptr<player_interface_t> player1, const field_t &field1, std::shared_ptr<player_interface_t> player2, const field_t &field2);
 
   ~sea_battle_t() = default;
 
@@ -20,4 +19,6 @@ public:
   static std::string get_player_name(turn_t turn);
 
 private:
+  std::array <std::shared_ptr<player_interface_t>, 2> players;
+  std::array <std::vector<std::string>, 2> fields;
 };
