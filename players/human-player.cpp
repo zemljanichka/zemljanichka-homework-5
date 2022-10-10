@@ -1,4 +1,5 @@
 #include "players/human-player.h"
+#include "set"
 
 std::pair<int, int> human_player_t::make_move(const field_t &my_field, const field_t &enemy_field){
 
@@ -13,6 +14,25 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
 
     std::getline(this->input_stream, s);
 
+    std::set <std::string> cur;
+    std::string dict = "ABCDEFGHIJ";
+
+    for (int i = 1; i <= field_t::FIELD_SIZE; i++){
+      std::string coord_1 = std::to_string(i);
+      x = i - 1;
+      for (int j = 0; j < field_t::FIELD_SIZE; j++){
+        std::string coord_2 = &dict[j];
+        cur.insert(coord_1 + coord_2);
+        y = j;
+      }
+    }
+
+    if (cur.find(s) != cur.end())
+      return {x, y};
+
+
+
+/*
     if (s.size() == 3 || s.size() == 2) {
         if (s[0] > '0' && s[0] <= '9')
           x = s[0] - '0';
@@ -27,6 +47,7 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
 
   if (x > 0 && x < cur_coords + 1 && y > 0 && y < cur_coords + 1)
       return {x - 1, y - 1};
+*/
 
   this->output_stream << "Incorrect move! [Correct example 1A or 10B or 6J]" << std::endl;
 
