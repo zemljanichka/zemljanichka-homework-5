@@ -14,7 +14,6 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
 
     std::getline(this->input_stream, s);
 
-    std::set <std::string> cur;
     std::string dict = "ABCDEFGHIJ";
 
     for (int i = 1; i <= field_t::FIELD_SIZE; i++){
@@ -22,16 +21,14 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
       x = i - 1;
       for (int j = 0; j < field_t::FIELD_SIZE; j++){
         std::string coord_2 = &dict[j];
-        cur.insert(coord_1 + coord_2);
-        y = j;
+        if (s == coord_1 + coord_2) {
+          y = j;
+          return {x, y};
+        }
       }
     }
 
-    if (cur.find((std::string)s) != cur.end())
-      return {x, y};
-
-    return {-1, -1};
-
+return {-1, -1};
 /*
     if (s.size() == 3 || s.size() == 2) {
         if (s[0] > '0' && s[0] <= '9')
