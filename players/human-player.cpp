@@ -30,7 +30,7 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
     if (cur.find(s) != cur.end())
       return {x, y};
 
-
+    std::cout << s;
 
 /*
     if (s.size() == 3 || s.size() == 2) {
