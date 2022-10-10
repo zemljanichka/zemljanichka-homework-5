@@ -21,14 +21,15 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
       x = i - 1;
       for (int j = 0; j < field_t::FIELD_SIZE; j++){
         std::string coord_2 = &dict[j];
-        if (s == coord_1 + coord_2) {
+        if ((std::string)s == (std::string)(coord_1 + coord_2)) {
           y = j;
           return {x, y};
         }
       }
     }
 
-return {-1, -1};
+
+    return {s[0], s.size()};
 /*
     if (s.size() == 3 || s.size() == 2) {
         if (s[0] > '0' && s[0] <= '9')
