@@ -20,7 +20,7 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
       std::string coord_1 = std::to_string(i);
       x = i - 1;
       for (int j = 0; j < field_t::FIELD_SIZE; j++){
-        std::string coord_2 = &dict[j];
+        char coord_2 = dict[j];
         if ((std::string)s == (std::string)(coord_1 + coord_2)) {
           y = j;
           return {x, y};
@@ -29,7 +29,7 @@ std::pair<int, int> human_player_t::make_move(const field_t &my_field, const fie
     }
 
 
-    return {s[0], s.size()};
+   // return {s[0], s.size()};
 /*
     if (s.size() == 3 || s.size() == 2) {
         if (s[0] > '0' && s[0] <= '9')
